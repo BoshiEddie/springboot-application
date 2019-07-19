@@ -45,16 +45,17 @@ public class UserController {
         return "dashboard";
     }
 
-//    @ModelAttribute
-//    public String delete(@RequestParam("id") Integer id, Model model){
-//        int flag = userService.delete(id);
-//        if(flag > 0){
-//            model.addAttribute("msg","Delete Successful");
-//        }else{
-//            model.addAttribute("msg","Oops, something was wrong");
-//        }
-//        return "dashboard";
-//    }
+
+    @RequestMapping(value="/delete",method = RequestMethod.GET)
+    public String delete(@RequestParam("id") Integer id, Model model){
+        int flag = userService.delete(id);
+        if(flag > 0){
+            model.addAttribute("msg","Delete Successful");
+        }else{
+            model.addAttribute("msg","Oops, something was wrong");
+        }
+        return "delete";
+    }
 
 
     @RequestMapping(value="/insert" ,method = {RequestMethod.POST,RequestMethod.GET})

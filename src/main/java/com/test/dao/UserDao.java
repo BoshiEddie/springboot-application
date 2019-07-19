@@ -38,8 +38,8 @@ public class UserDao{
     }
 
     public int delete(int id){
-        String sql = "delete from users where id=?";
-        int flag = baseDao.delete(sql,id);
+
+        int flag = baseDao.deleteById("users",id);
 
         if(flag > 0){
             return 1;

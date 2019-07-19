@@ -2,8 +2,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: eddie
-  Date: 18/07/2019
-  Time: 10:24
+  Date: 16/07/2019
+  Time: 17:01
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>Insert</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../test/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,15 +41,15 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="../test/dashboard">
+                        <a class="nav-link" href="../test/dashboard">
                             <span data-feather="home"></span>
-                            Dashboard <span class="sr-only">(current)</span>
+                            Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../test/insert">
+                        <a class="nav-link active" href="../test/insert">
                             <span data-feather="file"></span>
-                            Insert
+                            Insert<span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -80,7 +80,7 @@
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>Saved reports</span>
-                    <a class="d-flex align-items-center text-muted" href="../test/dashboard">
+                    <a class="d-flex align-items-center text-muted" href="#">
                         <span data-feather="plus-circle"></span>
                     </a>
                 </h6>
@@ -113,71 +113,25 @@
             </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-<%--            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">--%>
-<%--                <h1 class="h2">Dashboard</h1>--%>
-<%--                <div class="btn-toolbar mb-2 mb-md-0">--%>
-<%--                    <div class="btn-group mr-2">--%>
-<%--                        <button class="btn btn-sm btn-outline-secondary">Share</button>--%>
-<%--                        <button class="btn btn-sm btn-outline-secondary">Export</button>--%>
-<%--                    </div>--%>
-<%--                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">--%>
-<%--                        <span data-feather="calendar"></span>--%>
-<%--                        This week--%>
-<%--                    </button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h2>User INFO</h2>
-            <div class="btn-group mr-2">
-                <a class="btn btn-info" href="../test/insert" >Insert</a>
-            </div>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-striped table-sm table table-hover">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Username</th>
-                        <th>Sex</th>
-                        <th>Phone</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
 
-                        <c:forEach items="${data}" var="user" varStatus="vs">
-                            <tr>
-                                <td>${user.id}</td>
-                                <td>${user.name}</td>
-                                <td>${user.username}</td>
-                                <td><c:if test="${user.sex!=0}">M</c:if>
-                                <c:if test="${user.sex==0}">F</c:if></td>
-                                <td>${user.tel}</td>
-                                <td><button class="btn btn-info btn-sm" type="submit">Edit</button></td>
-                                <form action="delete" method="get">
-                                    <td><button class="btn btn-warning btn-sm" type="submit" >Delete</button>
-                                        <input type="hidden" name="id" value="${user.id}">
-                                    </td>
-                                        </form>
-                            </tr>
-                        </c:forEach>
-
-
-
-                    </tbody>
-                </table>
-            </div>
-        </main>
     </div>
 </div>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+    <h1>Delete Successfully</h1>
+    <c:out value="${msg}"></c:out>
+
+</main>
+
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="../../test/assert/js/vendor/popper.min.js"></script>
-<script src="../../test/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
