@@ -25,7 +25,6 @@ public class UserController {
         return "login";
     }
 
-
     @RequestMapping(value="/login", method = {RequestMethod.POST,RequestMethod.GET})
     public String login(@RequestParam("username") String loginname, @RequestParam("password") String loginpwd, Model model){
         int flag = userService.login(loginname,loginpwd);
@@ -45,7 +44,6 @@ public class UserController {
         return "dashboard";
     }
 
-
     @RequestMapping(value="/delete",method = RequestMethod.GET)
     public String delete(@RequestParam("id") Integer id, Model model){
         int flag = userService.delete(id);
@@ -57,12 +55,10 @@ public class UserController {
         return "delete";
     }
 
-
-    @RequestMapping(value = "insert",method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "/insert",method = {RequestMethod.POST,RequestMethod.GET})
     public String insert(){
         return "insert";
     }
-
 
     @RequestMapping(value="/doInsert" ,method = {RequestMethod.POST,RequestMethod.GET})
     public String insert1(
@@ -77,6 +73,24 @@ public class UserController {
         }
 
         return "doInsert";
+    }
+
+    @RequestMapping(value="/edit",method = {RequestMethod.POST,RequestMethod.GET})
+    public String edit(@RequestParam Integer id,Model model){
+        User user = userService.getUser(id);
+        model.addAttribute("user",user);
+        return "edit";
+    }
+
+    @RequestMapping(value = "/doEdit" ,method={RequestMethod.POST,RequestMethod.GET})
+    public String edit1(@RequestParam Integer id, @RequestParam String username, @RequestParam String tel , Model model){
+        int flag = userService.update(id,username,tel);
+        if(flag >= 0){
+            model.addAttribute("msg","Update Successful");
+        }else{
+            model.addAttribute("msg","Oops! Something wrong");
+        }
+        return "doEdit";
     }
 
 }

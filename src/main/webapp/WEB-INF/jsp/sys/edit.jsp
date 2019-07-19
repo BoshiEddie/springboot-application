@@ -1,9 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: eddie
-  Date: 18/07/2019
-  Time: 10:24
+  Date: 16/07/2019
+  Time: 17:01
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>Edit</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../test/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,9 +40,9 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="../test/dashboard">
+                        <a class="nav-link" href="../test/dashboard">
                             <span data-feather="home"></span>
-                            Dashboard <span class="sr-only">(current)</span>
+                            Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
@@ -53,9 +52,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link active" href="">
                             <span data-feather="shopping-cart"></span>
-                            Products
+                            Edit<span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -80,7 +79,7 @@
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>Saved reports</span>
-                    <a class="d-flex align-items-center text-muted" href="../test/dashboard">
+                    <a class="d-flex align-items-center text-muted" href="#">
                         <span data-feather="plus-circle"></span>
                     </a>
                 </h6>
@@ -113,75 +112,73 @@
             </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-<%--            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">--%>
-<%--                <h1 class="h2">Dashboard</h1>--%>
-<%--                <div class="btn-toolbar mb-2 mb-md-0">--%>
-<%--                    <div class="btn-group mr-2">--%>
-<%--                        <button class="btn btn-sm btn-outline-secondary">Share</button>--%>
-<%--                        <button class="btn btn-sm btn-outline-secondary">Export</button>--%>
-<%--                    </div>--%>
-<%--                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">--%>
-<%--                        <span data-feather="calendar"></span>--%>
-<%--                        This week--%>
-<%--                    </button>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h2>User INFO</h2>
-            <div class="btn-group mr-2">
-                <a class="btn btn-info" href="../test/insert" >Insert</a>
-            </div>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-striped table-sm table table-hover">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Username</th>
-                        <th>Sex</th>
-                        <th>Phone</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
 
-                        <c:forEach items="${data}" var="user" varStatus="vs">
-                            <tr>
-                                <td>${user.id}</td>
-                                <td>${user.name}</td>
-                                <td>${user.username}</td>
-                                <td><c:if test="${user.sex!=0}">M</c:if>
-                                <c:if test="${user.sex==0}">F</c:if></td>
-                                <td>${user.tel}</td>
-                                <form action="edit" method="get">
-                                    <td><button class="btn btn-info btn-sm" type="submit">Edit</button>
-                                        <input type="hidden" name="id" value="${user.id}">
-                                    </td>
-                                        </form>
-                                <form action="delete" method="get">
-                                    <td><button class="btn btn-warning btn-sm" type="submit" >Delete</button>
-                                        <input type="hidden" name="id" value="${user.id}">
-                                    </td>
-                                        </form>
-                            </tr>
-                        </c:forEach>
-
-
-
-                    </tbody>
-                </table>
-            </div>
-        </main>
     </div>
 </div>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+    <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">New User Info</h4>
+        <form action="doEdit" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label >Name</label>
+                    <input type="text" class="form-control" readonly="readonly" value="${user.name}">
+                    <div class="invalid-feedback">
+                        Valid first name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Gender</label>
+                    <input type="text" class="form-control" readonly="readonly" value="${user.sex}" >
+                    <div class="invalid-feedback">
+                        Please select a valid country.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="username">Username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">@</span>
+                    </div>
+                    <input name="username" id="username" type="text" class="form-control" value="${user.username}" onfocus="if (value =='${user.username}'){value =''}" onblur="if (value ==''){value='${user.username}'}" />
+                    <div class="invalid-feedback" style="width: 100%;">
+                        Your username is required.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="tel">Phone number</label>
+                <input type="text" class="form-control" id="tel" placeholder="XXX-XXX-XXXXXX" name="tel" value="${user.tel}" onfocus="if (value == '${user.tel}'){value=''}" onblur="if (value==''){value='${user.tel}'}" />
+                <div class="invalid-feedback">
+                    Please enter your shipping address.
+                </div>
+            </div>
+
+            <hr class="mb-4">
+
+            <input type="hidden" name="id" value="${user.id}">
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+        </form>
+    </div>
+    </div>
+
+</main>
+
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="../../test/assert/js/vendor/popper.min.js"></script>
-<script src="../../test/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

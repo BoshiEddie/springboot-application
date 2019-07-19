@@ -16,6 +16,16 @@ public class UserDao{
         return baseDao.query(sql,User.class,new Object[]{"%"+name+"%"});
     }
 
+    public int setUserD(Integer id, String username, String tel){
+        String sql = "update users set username = \"" + username + "\", tel=\"" + tel + "\" where id = ?";
+        return baseDao.updateById(sql,id);
+    }
+
+    public User getUserById(Integer id){
+        String sql = "select * from users where id = ?";
+        return baseDao.queryById(sql,User.class,id);
+    }
+
 
     public int login(String loginname,String loginpwd){
         String sql = "select * from users where username=? and password=?";
@@ -48,7 +58,7 @@ public class UserDao{
     }
 
     public int insert(String name, String username, String password, String sex, String tel){
-        
+
         if(sex.equals("Male")){
             sex="1";
         }else{
