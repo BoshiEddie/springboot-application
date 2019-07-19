@@ -58,12 +58,25 @@ public class UserController {
     }
 
 
-    @RequestMapping(value="/insert" ,method = {RequestMethod.POST,RequestMethod.GET})
-    public String insert(
-//            @RequestParam("name") String name,@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("sex") String sex, @RequestParam("tel") String tel
-    ){
-
+    @RequestMapping(value = "insert",method = {RequestMethod.POST,RequestMethod.GET})
+    public String insert(){
         return "insert";
+    }
+
+
+    @RequestMapping(value="/doInsert" ,method = {RequestMethod.POST,RequestMethod.GET})
+    public String insert1(
+            @RequestParam("name") String name,@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("sex") String sex, @RequestParam("tel") String tel
+    ,Model model){
+
+        int flag = userService.insert(name,username,password,sex,tel);
+        if(flag > 0){
+            model.addAttribute("msg","Insert Successful");
+        }else{
+            model.addAttribute("msg","Oops, something was wrong");
+        }
+
+        return "doInsert";
     }
 
 }

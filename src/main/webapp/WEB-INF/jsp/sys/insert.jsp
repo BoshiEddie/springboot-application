@@ -118,6 +118,67 @@
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 
+    <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">New User Info</h4>
+        <form action="doInsert" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="Name">Name</label>
+                    <input type="text" class="form-control" id="Name" placeholder="Name" name="name" required>
+                    <div class="invalid-feedback">
+                        Valid first name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="sex">Gender</label>
+                    <select class="custom-select d-block w-100" id="sex" name="sex" required>
+                        <option value="">Choose...</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid country.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="username">Username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="username"required>
+                    <div class="invalid-feedback" style="width: 100%;">
+                        Your username is required.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                <div class="invalid-feedback">
+                    Please enter your shipping address.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="tel">Phone number</label>
+                <input type="text" class="form-control" id="tel" placeholder="XXX-XXX-XXXXXX" name="tel" required>
+                <div class="invalid-feedback">
+                    Please enter your shipping address.
+                </div>
+            </div>
+
+            <hr class="mb-4">
+
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+        </form>
+    </div>
+    </div>
 
 </main>
 

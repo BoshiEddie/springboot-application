@@ -1,6 +1,7 @@
 package com.test.dto;
 
 
+
 import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 @Data
@@ -11,6 +12,15 @@ public class User extends BaseDTO{
     private String password;
     private String sex;
     private String tel;
+
+    public User(Integer id, String name, String username, String password, String sex, String tel) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.sex = sex;
+        this.tel = tel;
+    }
 
     public Integer getId() {
         return id;

@@ -11,7 +11,6 @@ public class UserDao{
     @Autowired
     BaseDao baseDao;
 
-
     public List<User> getUserList(String name){
         String sql = "select * from users where name like ?";
         return baseDao.query(sql,User.class,new Object[]{"%"+name+"%"});
@@ -48,16 +47,24 @@ public class UserDao{
         }
     }
 
-//    public int insert(String name, String username, String password, String sex, String tel){
-//        String sql = "insert into users values(null,?,?,?,?,?)";
-//        int flag = baseDao.insert();
-//
-//        if(flag > 0){
-//            return 1;
-//        }else{
-//            return 0;
-//        }
-//
-//    }
+    public int insert(String name, String username, String password, String sex, String tel){
+        
+        if(sex.equals("Male")){
+            sex="1";
+        }else{
+            sex="0";
+        }
+        User user = new User(null,name,username,password,sex,tel);
+        String sql = "insert into users values(?,?,?,?,?,?)";
+
+        int flag = baseDao.update2(sql,new Object[]{null,name,username,password,sex,tel});
+
+        if(flag>=0){
+            return 1;
+        }else{
+            return 0;
+        }
+
+    }
 }
 

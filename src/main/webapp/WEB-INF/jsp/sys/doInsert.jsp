@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Delete</title>
+    <title>Insert</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../test/dist/css/bootstrap.min.css" rel="stylesheet">

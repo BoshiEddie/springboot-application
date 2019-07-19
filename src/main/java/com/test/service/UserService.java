@@ -21,4 +21,6 @@ public class UserService {
     public List<User> getAllUsers(){ return userDao.getAllUser(); }
 
     public int delete(Integer id){ return  userDao.delete(id); }
+
+    public int insert(String name, String username, String password, String sex, String tel) {return userDao.insert(name,username,password,sex,tel);}
 }
