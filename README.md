@@ -19,3 +19,5 @@ I am going to use springboot and boostrap to build a website
     2019-7-18, introduce Bootstrap into my project and also finished select * function and show the result in the page
     ```
     2019-7-19, Delete function has been finished and it works very well, today I will finish insert and edit
+    ``
+    2019-7-19, Insert has been finished, Now only edit left.
