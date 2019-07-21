@@ -23,3 +23,6 @@ I am going to use springboot and boostrap to build a website
     2019-7-19, Insert has been finished, Now only edit left.
     ```
     2019-7-19, Update finally finished, the whole project has been finished roughly
+    ```
+    2019-7-21, Day is Sunday, but there is no holiday for me, The project must be tested and debug in 4 days
+    I found like 12 errors or bugs in the project, some of them are quite simple while some don't
